@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Ads Strategy 2026 — Persona Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12140f;
+  --paper:#eceadf;
+  --paper-2:#e3e0d2;
+  --line:#c7c3b2;
+  --muted:#5c5d52;
+  --field:#0f5c3f;        /* pitch green */
+  --field-2:#127a52;
+  --chalk:#f4f2e9;
+  --flag:#b23a2e;         /* US sportsbook red */
+  --gold:#c88a2d;
+  --radius:3px;
+}
+:root:not([data-theme="light"]){
+  --ink:#eceadf; --paper:#14160f; --paper-2:#1b1e15; --line:#33362a;
+  --muted:#9a9c8c; --chalk:#1b1e15; --field:#3fae7f; --field-2:#4cc48f;
+}
+:root[data-theme="dark"]{
+  --ink:#eceadf; --paper:#14160f; --paper-2:#1b1e15; --line:#33362a;
+  --muted:#9a9c8c; --chalk:#1b1e15; --field:#3fae7f; --field-2:#4cc48f;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+code,.mono{font-family:"Spline Sans Mono",monospace}
+a{color:var(--field-2)}
+
+/* ---- hero ---- */
+.hero{
+  background:var(--field);color:var(--chalk);
+  border-bottom:6px solid var(--flag);position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(90deg,transparent 0 78px,rgba(255,255,255,.05) 78px 79px);
+  pointer-events:none;
+}
+.hero-inner{max-width:1080px;margin:0 auto;padding:56px 28px 44px;position:relative}
+.kicker{font-family:"Spline Sans Mono",monospace;font-size:12.5px;letter-spacing:.08em;
+  color:rgba(244,242,233,.72);margin:0 0 18px}
+.hero h1{color:var(--chalk);font-size:clamp(2.6rem,6vw,4.4rem);margin:0 0 10px;max-width:14ch}
+.hero .sub{font-size:1.12rem;max-width:56ch;color:rgba(244,242,233,.9);margin:0}
+.scoreboard{display:flex;flex-wrap:wrap;gap:0;margin-top:38px;
+  border:1px solid rgba(244,242,233,.28);border-radius:var(--radius);overflow:hidden}
+.stat{flex:1 1 150px;padding:16px 20px;border-right:1px solid rgba(244,242,233,.22)}
+.stat:last-child{border-right:none}
+.stat b{display:block;font-family:"Fraunces",serif;font-size:1.85rem;font-weight:600;line-height:1}
+.stat span{display:block;font-size:12px;letter-spacing:.03em;color:rgba(244,242,233,.7);margin-top:6px}
+
+/* ---- body ---- */
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+.eyebrow{font-family:"Spline Sans Mono",monospace;font-size:12.5px;color:var(--field-2);
+  letter-spacing:.04em;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--flag);display:inline-block}
+h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin:0 0 8px}
+.lead{font-size:1.12rem;color:var(--muted);max-width:64ch;margin:0 0 28px}
+p{max-width:70ch}
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+.cell{background:var(--paper);padding:24px}
+.cell h3{font-size:1.15rem;margin:0 0 6px}
+.cell p{font-size:.95rem;color:var(--muted);margin:0}
+.tag{display:inline-block;font-family:"Spline Sans Mono",monospace;font-size:11px;
+  padding:3px 8px;border-radius:2px;background:var(--paper-2);border:1px solid var(--line);
+  color:var(--muted);margin-bottom:12px}
+.tag.green{color:var(--field-2);border-color:var(--field)}
+.tag.red{color:var(--flag);border-color:var(--flag)}
+
+/* pillar blocks */
+.pillar{display:grid;grid-template-columns:52px 1fr;gap:22px;padding:28px 0;border-top:1px solid var(--line)}
+.pillar:first-of-type{border-top:none}
+.pnum{font-family:"Fraunces",serif;font-size:2.2rem;color:var(--flag);line-height:1}
+.pillar h3{font-size:1.45rem;margin:0 0 6px}
+.pillar .kpi{font-family:"Spline Sans Mono",monospace;font-size:13px;color:var(--field-2);margin:10px 0 0}
+
+/* flow */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:8px 0 4px;
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.step{flex:1 1 160px;padding:18px 20px;border-right:1px solid var(--line);background:var(--paper);position:relative}
+.step:last-child{border-right:none}
+.step .n{font-family:"Spline Sans Mono",monospace;font-size:11px;color:var(--flag)}
+.step h4{font-family:"Inter",sans-serif;font-size:.98rem;font-weight:600;margin:6px 0 4px}
+.step p{font-size:.85rem;color:var(--muted);margin:0}
+.step .ev{font-family:"Spline Sans Mono",monospace;font-size:11px;color:var(--field-2);margin-top:8px;display:block}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:6px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.03em;color:var(--muted);font-weight:500}
+td.num,th.num{text-align:right;font-family:"Spline Sans Mono",monospace}
+tbody tr:hover{background:var(--paper-2)}
+.scroll{overflow-x:auto}
+.bar{height:6px;background:var(--field);border-radius:2px;display:inline-block;vertical-align:middle;margin-right:8px}
+.good{color:var(--field-2)} .warn{color:var(--gold)} .bad{color:var(--flag)}
+
+ul.clean{list-style:none;padding:0;margin:16px 0 0}
+ul.clean li{padding:10px 0 10px 26px;position:relative;border-bottom:1px solid var(--line);max-width:70ch}
+ul.clean li::before{content:"";position:absolute;left:0;top:18px;width:10px;height:10px;
+  border:2px solid var(--field);border-radius:50%}
+ul.clean li:last-child{border-bottom:none}
+
+.callout{background:var(--paper-2);border-left:3px solid var(--flag);padding:18px 22px;
+  border-radius:0 var(--radius) var(--radius) 0;margin:22px 0;max-width:72ch}
+.callout strong{color:var(--ink)}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.toc a{font-family:"Spline Sans Mono",monospace;font-size:12px;text-decoration:none;color:var(--muted);
+  border:1px solid var(--line);padding:6px 12px;border-radius:20px}
+.toc a:hover{border-color:var(--field);color:var(--field-2)}
+
+footer{padding:40px 0 60px;color:var(--muted);font-size:.85rem}
+.theme-btn{position:fixed;bottom:18px;right:18px;z-index:20;background:var(--field);color:var(--chalk);
+  border:none;border-radius:50%;width:44px;height:44px;font-size:18px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+
+@media(max-width:720px){
+  .cols-3,.cols-2{grid-template-columns:1fr}
+  .stat{flex-basis:50%;border-bottom:1px solid rgba(244,242,233,.22)}
+  .pillar{grid-template-columns:1fr;gap:8px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<button class="theme-btn" onclick="const r=document.documentElement;const d=r.getAttribute('data-theme')==='dark';r.setAttribute('data-theme',d?'light':'dark')" aria-label="Toggle theme">◐</button>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">META ADS · JAN–SEP 2026 · PREPARED BY ANDRÉ MOTA</p>
+    <h1>The Persona Playbook</h1>
+    <p class="sub">How we run paid social on Meta: three campaign engines built on a roster of betting personas — one for sportsbook acquisition, one for cheap follower growth, one for organic reach.</p>
+    <div class="scoreboard">
+      <div class="stat"><b>$518K</b><span>Total spend, in period</span></div>
+      <div class="stat"><b>96K</b><span>Instagram follows</span></div>
+      <div class="stat"><b>115K</b><span>Facebook page likes</span></div>
+      <div class="stat"><b>12.6K</b><span>Fanatics initiate-checkouts</span></div>
+      <div class="stat"><b>5</b><span>Active personas</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="overview">
+  <p class="eyebrow">THE MODEL</p>
+  <h2>One roster, three engines</h2>
+  <p class="lead">The account doesn't advertise as a single brand. It operates a stable of betting <em>personas</em> — each a self-contained handle, voice, and mid-funnel domain — and points three distinct campaign types at them depending on the objective.</p>
+  <div class="toc">
+    <a href="#personas">Personas</a>
+    <a href="#acq">1 · Acquisition</a>
+    <a href="#followers">2 · Followers</a>
+    <a href="#boost">3 · Organic Boost</a>
+    <a href="#tech">Technical setup</a>
+    <a href="#states">State targeting</a>
+    <a href="#practices">Best practices</a>
+    <a href="#appendix">Performance appendix</a>
+  </div>
+</section>
+
+<section id="personas">
+  <p class="eyebrow">THE ROSTER</p>
+  <h2>The personas</h2>
+  <p class="lead">Each persona is an independent tipster identity with its own social handles and its own mid-funnel domain. This keeps creative native to the feed, spreads risk across accounts, and lets each identity build its own audience and retargeting pool.</p>
+  <div class="grid cols-3">
+    <div class="cell">
+      <span class="tag green">$181K · lead persona</span>
+      <h3>Miles Parker</h3>
+      <p>The flagship. Carries the full three-engine stack — Fanatics state acquisition, FB &amp; IG growth, and organic boosts. Highest spend and the primary acquisition workhorse.</p>
+    </div>
+    <div class="cell">
+      <span class="tag">$64K</span>
+      <h3>Zé do Gol</h3>
+      <p>Football-first, IG-native persona focused on the Brazilian market. Overwhelmingly a follower &amp; boost engine — drove the single largest block of Instagram follows in the account at the lowest cost per follow.</p>
+    </div>
+    <div class="cell">
+      <span class="tag">$62K</span>
+      <h3>The Line Cook</h3>
+      <p>Strong Facebook growth persona. FB-Growth and organic-boost heavy, with a healthy sub-$1.10 cost per page like.</p>
+    </div>
+    <div class="cell">
+      <span class="tag">$49K</span>
+      <h3>Cypher Picks</h3>
+      <p>Facebook-led growth persona; also the one identity that carried a small DraftKings acquisition test before it was paused.</p>
+    </div>
+    <div class="cell">
+      <span class="tag">$7K</span>
+      <h3>TheSpinTrader</h3>
+      <p>Casino-focused persona running FB growth. Hit target CPF (~$0.99) at limited scale.</p>
+    </div>
+    <div class="cell" style="background:var(--paper-2)">
+      <h3 style="color:var(--muted)">Why personas?</h3>
+      <p>Native voice beats brand ads in the feed, each handle compounds its own audience, and the structure isolates any single account's delivery or policy risk.</p>
+    </div>
+  </div>
+</section>
+
+<section id="engines">
+  <p class="eyebrow">THE THREE ENGINES</p>
+  <h2>Campaign categories</h2>
+
+  <div class="pillar" id="acq">
+    <div class="pnum">1</div>
+    <div>
+      <span class="tag red">SALES · initiate_checkout</span>
+      <h3>Acquisition — sportsbook sign-ups</h3>
+      <p>Drives users from the persona's mid-funnel domain out to the sportsbook. Ads route to the persona's landing page; a CTA click fires an <code>InitiateCheckout</code> event and redirects the user to the sportsbook's own registration flow. Ad sets are split <strong>state by state</strong> across US legal-betting markets so budget, targeting and reporting stay isolated per market.</p>
+      <p class="kpi">RUN ON: Fanatics (live) · DraftKings (tested, paused) &nbsp;|&nbsp; ~12.6K ICs · ~$4.05 blended CPIC</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>DraftKings — why it was paused.</strong> We ran the same acquisition structure for DraftKings to drive new sign-ups, but sign-up conversion came in poorly. DraftKings already holds a huge share of the US market, so the brand's real interest is <strong>betslip volume</strong>, not fresh registrations or FTDs. We therefore stopped the DK acquisition campaigns and redirected that persona's activity into boosts that push betslip volume — matching what the brand actually values.
+  </div>
+
+  <div class="pillar" id="followers">
+    <div class="pnum">2</div>
+    <div>
+      <span class="tag green">ENGAGEMENT / TRAFFIC · CPF</span>
+      <h3>Follower growth</h3>
+      <p>The workhorse for building each persona's owned audience. Optimised purely on <strong>cost per follower</strong>, split by platform because the two behave differently.</p>
+      <p class="kpi">TARGETS: Instagram $1–2 CPF · Facebook ~$1 per page like &nbsp;|&nbsp; In period: FB ran $0.99–$1.28, IG well under target</p>
+    </div>
+  </div>
+
+  <div class="pillar" id="boost">
+    <div class="pnum">3</div>
+    <div>
+      <span class="tag">TRAFFIC / ENGAGEMENT · boost</span>
+      <h3>Organic post boost</h3>
+      <p>Amplifies published persona content. Doubles as a follower driver <em>and</em> an engagement driver — putting spend behind winning posts to keep growing the audience while feeding the content social proof. This is also the engine DraftKings was moved into to chase betslip volume.</p>
+      <p class="kpi">LARGEST BLOCK BY SPEND · lowest cost per profile visit (Zé do Gol boosts ~ $0.04 / visit)</p>
+    </div>
+  </div>
+</section>
+
+<section id="tech">
+  <p class="eyebrow">TECHNICAL IMPLEMENTATION</p>
+  <h2>How acquisition tracking is wired</h2>
+  <p class="lead">The acquisition engine relies on a mid-funnel domain per persona, sitting between the ad and the sportsbook. That page is where the conversion event fires.</p>
+  <div class="flow">
+    <div class="step">
+      <span class="n">01</span>
+      <h4>Feed ad</h4>
+      <p>Persona-native creative served in a state-specific ad set.</p>
+    </div>
+    <div class="step">
+      <span class="n">02</span>
+      <h4>Persona domain</h4>
+      <p>Click lands on the persona's own mid-funnel landing page.</p>
+      <span class="ev">→ LandingPageView</span>
+    </div>
+    <div class="step">
+      <span class="n">03</span>
+      <h4>CTA click</h4>
+      <p>User taps the primary CTA to continue to the sportsbook.</p>
+      <span class="ev">→ InitiateCheckout</span>
+    </div>
+    <div class="step">
+      <span class="n">04</span>
+      <h4>Sportsbook</h4>
+      <p>Redirect to the sportsbook's own registration / offer flow.</p>
+      <span class="ev">(handoff)</span>
+    </div>
+  </div>
+  <ul class="clean">
+    <li><strong>InitiateCheckout is the optimisation event.</strong> It fires on the persona domain at the CTA click — the last signal we own before the user leaves for the sportsbook — so Meta optimises toward intent-to-continue rather than a raw pageview.</li>
+    <li><strong>LandingPageView is the mid-funnel guardrail.</strong> Watching the LPV→IC ratio per state tells us whether the page is converting the click or leaking it.</li>
+    <li><strong>One domain per persona</strong> keeps pixels, audiences and creative native to each identity and avoids cross-contaminating signal between personas.</li>
+    <li><strong>State-split ad sets</strong> give clean per-market budgets, targeting and CPIC — essential when legality and payout economics differ state to state.</li>
+  </ul>
+</section>
+
+<section id="states">
+  <p class="eyebrow">GEO STRATEGY</p>
+  <h2>State-level targeting</h2>
+  <p class="lead">Acquisition ad sets are split by US state. Being legal in a state isn't enough — some legal markets simply don't clear our CPF / cost-per-signup thresholds, so we concentrate budget where the unit economics work and cut or cap the rest.</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>State (Fanatics)</th><th class="num">Spend</th><th class="num">Initiate&nbsp;Checkout</th><th class="num">CPIC</th><th>Read</th></tr></thead>
+    <tbody>
+      <tr><td>Illinois</td><td class="num">$3,712</td><td class="num">1,310</td><td class="num good">$2.83</td><td class="good">Scale</td></tr>
+      <tr><td>Louisiana</td><td class="num">$3,013</td><td class="num">907</td><td class="num good">$3.32</td><td class="good">Scale</td></tr>
+      <tr><td>Ohio</td><td class="num">$4,606</td><td class="num">1,350</td><td class="num good">$3.41</td><td class="good">Scale</td></tr>
+      <tr><td>Michigan</td><td class="num">$2,258</td><td class="num">663</td><td class="num good">$3.41</td><td class="good">Scale</td></tr>
+      <tr><td>Maryland</td><td class="num">$2,536</td><td class="num">736</td><td class="num good">$3.45</td><td class="good">Scale</td></tr>
+      <tr><td>Pennsylvania</td><td class="num">$2,316</td><td class="num">670</td><td class="num good">$3.46</td><td class="good">Scale</td></tr>
+      <tr><td>North Carolina</td><td class="num">$3,990</td><td class="num">1,149</td><td class="num good">$3.47</td><td class="good">Scale</td></tr>
+      <tr><td>Colorado</td><td class="num">$2,018</td><td class="num">504</td><td class="num">$4.00</td><td>Hold</td></tr>
+      <tr><td>Indiana</td><td class="num">$2,646</td><td class="num">660</td><td class="num">$4.01</td><td>Hold</td></tr>
+      <tr><td>Kentucky</td><td class="num">$2,261</td><td class="num">560</td><td class="num">$4.04</td><td>Hold</td></tr>
+      <tr><td>New Jersey</td><td class="num">$2,432</td><td class="num">584</td><td class="num">$4.16</td><td>Hold</td></tr>
+      <tr><td>Tennessee</td><td class="num">$3,329</td><td class="num">796</td><td class="num">$4.18</td><td>Hold</td></tr>
+      <tr><td>Massachusetts</td><td class="num">$2,701</td><td class="num">586</td><td class="num warn">$4.61</td><td class="warn">Watch</td></tr>
+      <tr><td>Kansas</td><td class="num">$1,387</td><td class="num">290</td><td class="num warn">$4.78</td><td class="warn">Watch</td></tr>
+      <tr><td>Virginia</td><td class="num">$4,767</td><td class="num">929</td><td class="num warn">$5.13</td><td class="warn">Watch</td></tr>
+      <tr><td>Iowa</td><td class="num">$2,708</td><td class="num">481</td><td class="num warn">$5.63</td><td class="warn">Watch</td></tr>
+      <tr><td>Connecticut</td><td class="num">$2,264</td><td class="num">377</td><td class="num bad">$6.01</td><td class="bad">Cap / cut</td></tr>
+      <tr><td>Wyoming</td><td class="num">$904</td><td class="num">62</td><td class="num bad">$14.58</td><td class="bad">Cut</td></tr>
+      <tr><td>Vermont</td><td class="num">$464</td><td class="num">18</td><td class="num bad">$25.76</td><td class="bad">Cut</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:16px;color:var(--muted);font-size:.9rem">Read column is a management convention: green ≈ below ~$3.50 CPIC, watch ≈ $4.50–$6, cut ≈ thin-population states where volume never builds. Thresholds are illustrative — set the live cutoff against the brand's payout economics.</p>
+</section>
+
+<section id="practices">
+  <p class="eyebrow">OPERATING PRINCIPLES</p>
+  <h2>Best practices</h2>
+  <div class="grid cols-2">
+    <div class="cell">
+      <h3>Match the KPI to the brand's real goal</h3>
+      <p>Fanatics wants sign-ups → optimise InitiateCheckout. DraftKings wants volume, not registrations → move to boosts. Don't force one objective across brands with different market positions.</p>
+    </div>
+    <div class="cell">
+      <h3>One event, owned before the handoff</h3>
+      <p>Fire the optimisation event on our own domain at the CTA, since we lose signal once the user reaches the sportsbook. It's the strongest intent signal we control.</p>
+    </div>
+    <div class="cell">
+      <h3>Split geo, judge on economics not legality</h3>
+      <p>Legal ≠ profitable. Keep ad sets per state so weak markets can be capped without dragging the winners, and let CPIC / cost-per-signup decide budget.</p>
+    </div>
+    <div class="cell">
+      <h3>Separate follower KPIs by platform</h3>
+      <p>IG and FB followers cost and behave differently — hold IG to $1–2 CPF and FB near $1, and never blend them into one target.</p>
+    </div>
+    <div class="cell">
+      <h3>Boost winners, not everything</h3>
+      <p>Put spend behind posts that already earn organic engagement so boosts compound both reach and social proof, rather than paying to distribute weak content.</p>
+    </div>
+    <div class="cell">
+      <h3>Isolate risk across personas</h3>
+      <p>Independent handles and domains mean a delivery or policy problem on one identity never takes down the whole account.</p>
+    </div>
+  </div>
+</section>
+
+<section id="appendix">
+  <p class="eyebrow">PERFORMANCE APPENDIX</p>
+  <h2>By the numbers</h2>
+  <p class="lead">Spend and results by campaign engine, Jan 1 – Sep 15 2026. Figures are Meta-reported, in-period, delivering campaigns only.</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Engine</th><th class="num">Spend</th><th class="num">Primary result</th><th class="num">IG follows</th><th class="num">FB likes</th></tr></thead>
+    <tbody>
+      <tr><td>Organic post boost</td><td class="num">$146,504</td><td class="num">1.45M engagements / visits</td><td class="num">54,187</td><td class="num">661</td></tr>
+      <tr><td>Follower growth — FB</td><td class="num">$107,672</td><td class="num">96,738 likes</td><td class="num">0</td><td class="num">96,738</td></tr>
+      <tr><td>Follower growth — IG</td><td class="num">$101,955</td><td class="num">956K profile visits</td><td class="num">37,796</td><td class="num">3,808</td></tr>
+      <tr><td>Acquisition (InitiateCheckout)</td><td class="num">$54,264</td><td class="num">13,416 ICs</td><td class="num">88</td><td class="num">155</td></tr>
+      <tr><td>Traffic &amp; other</td><td class="num">$85,601</td><td class="num">—</td><td class="num">3,050</td><td class="num">173</td></tr>
+      <tr><td>Lead / mixed engagement</td><td class="num">$22,454</td><td class="num">—</td><td class="num">811</td><td class="num">12,995</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 style="margin-top:34px;font-size:1.25rem">Follower cost by persona (Facebook growth)</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Persona</th><th class="num">CPF (page like)</th><th>vs $1 target</th></tr></thead>
+    <tbody>
+      <tr><td>Miles Parker — FB Legal States</td><td class="num good">$0.53</td><td class="good">under</td></tr>
+      <tr><td>TheSpinTrader</td><td class="num good">$0.99</td><td class="good">on target</td></tr>
+      <tr><td>The Line Cook</td><td class="num good">$1.01</td><td class="good">on target</td></tr>
+      <tr><td>Miles Parker — FB Growth</td><td class="num">$1.15</td><td>on target</td></tr>
+      <tr><td>Cypher Picks</td><td class="num">$1.28</td><td>slightly over</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:14px;color:var(--muted);font-size:.9rem">Instagram follower cost across boost and always-on campaigns ran comfortably inside the $1–2 target band, with Zé do Gol IG boosts the standout at roughly $0.04 per profile visit and the largest single block of IG follows.</p>
+</section>
+
+<footer>
+  Meta Ads Strategy · Jan–Sep 2026 · Internal strategy record · Prepared by André Mota, Clever Advertising. Figures sourced from Meta Ads Manager exports (campaign, ad-set, ad level).
+</footer>
+
+</div>
+</body>
+</html>
