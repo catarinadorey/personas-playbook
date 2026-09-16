@@ -135,6 +135,41 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.85rem}
   .pillar{grid-template-columns:1fr;gap:8px}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* ---- part switcher ---- */
+.partnav{position:sticky;top:0;z-index:15;background:var(--paper);border-bottom:1px solid var(--line);
+  display:flex;gap:0;max-width:1080px;margin:0 auto}
+.partnav a{flex:1;text-align:center;padding:15px 10px;text-decoration:none;color:var(--muted);
+  font-family:"Spline Sans Mono",monospace;font-size:12.5px;letter-spacing:.02em;border-bottom:2px solid transparent}
+.partnav a.on,.partnav a:hover{color:var(--field-2);border-bottom-color:var(--flag)}
+
+/* ---- manual hero ---- */
+.hero.manual{background:#151812;border-bottom-color:var(--gold)}
+:root[data-theme="light"] .hero.manual,html:not([data-theme="dark"]) .hero.manual{background:#1b1e15}
+.hero.manual h1{color:#f7c948}
+
+/* screenshots */
+figure{margin:26px 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper-2)}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-family:"Spline Sans Mono",monospace;font-size:11.5px;color:var(--muted);
+  padding:10px 14px;border-top:1px solid var(--line);background:var(--paper)}
+figcaption b{color:var(--field-2);font-weight:500}
+
+/* module cards */
+.mod{border:1px solid var(--line);border-radius:var(--radius);margin:14px 0;overflow:hidden;background:var(--paper)}
+.mod-head{display:flex;align-items:baseline;gap:12px;padding:16px 20px;background:var(--paper-2);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.mod-head h3{font-size:1.15rem;margin:0}
+.mod-head .role{font-family:"Spline Sans Mono",monospace;font-size:11px;color:var(--muted)}
+.mod-body{padding:18px 20px}
+.mod-body p{margin:0 0 12px}
+.mod-body p:last-child{margin-bottom:0}
+.setup{margin:12px 0 0;padding:14px 16px;background:var(--paper-2);border-radius:var(--radius);border-left:3px solid var(--field)}
+.setup .h{font-family:"Spline Sans Mono",monospace;font-size:11px;color:var(--field-2);letter-spacing:.04em;display:block;margin-bottom:8px}
+.setup ol{margin:0;padding-left:20px}
+.setup ol li{margin:4px 0;font-size:.92rem}
+.field-tbl td:first-child{font-family:"Spline Sans Mono",monospace;font-size:.82rem;color:var(--field-2);white-space:nowrap;vertical-align:top}
+kbd{font-family:"Spline Sans Mono",monospace;font-size:.82em;background:var(--paper-2);border:1px solid var(--line);
+  border-radius:3px;padding:1px 6px}
 </style>
 </head>
 <body>
@@ -154,6 +189,11 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.85rem}
     </div>
   </div>
 </header>
+
+<nav class="partnav">
+  <a href="#overview" class="on">PART 1 · META STRATEGY</a>
+  <a href="#manual">PART 2 · PICKS HUB MANUAL</a>
+</nav>
 
 <div class="wrap">
 
@@ -384,8 +424,237 @@ footer{padding:40px 0 60px;color:var(--muted);font-size:.85rem}
   <p style="margin-top:14px;color:var(--muted);font-size:.9rem">Instagram follower cost across boost and always-on campaigns ran comfortably inside the $1–2 target band, with Zé do Gol IG boosts the standout at roughly $0.04 per profile visit and the largest single block of IG follows.</p>
 </section>
 
+</div><!-- /wrap part1 -->
+
+<header class="hero manual" id="manual">
+  <div class="hero-inner">
+    <p class="kicker">PART 2 · PLATFORM MANUAL · MILES PICKS HUB (BASE44)</p>
+    <h1>Picks Hub — Operator Manual</h1>
+    <p class="sub">Picks Hub is the back office behind every persona. It's where you build the mid-funnel bet-slip pages and brand offers, manage sportsbooks and disclaimers, capture subscribers, run the email/SMS engine, and read performance. This is a walkthrough of every section — what it does, and how to set it up.</p>
+    <div class="scoreboard">
+      <div class="stat"><b>Build</b><span>Picks, offers &amp; lead pages</span></div>
+      <div class="stat"><b>Grow</b><span>Subscribers, email &amp; SMS</span></div>
+      <div class="stat"><b>Convert</b><span>CTA routing to sportsbooks</span></div>
+      <div class="stat"><b>Measure</b><span>Analytics, results &amp; A/B</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="concept">
+  <p class="eyebrow">MENTAL MODEL</p>
+  <h2>How the pieces fit</h2>
+  <p class="lead">One Picks Hub instance runs one persona. The core loop: build a <strong>Pick</strong> or <strong>Brand Offer</strong> → it renders as a public mid-funnel page under the persona's domain → a visitor taps the CTA (<code>InitiateCheckout</code>) → they're deep-linked to the sportsbook. Everything else in the sidebar either feeds that page (sportsbooks, CTA presets, disclaimers, footers, testimonials) or works the audience the page captures (subscribers, campaigns, email/SMS, results).</p>
+  <div class="flow">
+    <div class="step"><span class="n">BUILD</span><h4>Pick / Offer</h4><p>Compose the slip or the bonus offer and pick a layout.</p></div>
+    <div class="step"><span class="n">PUBLISH</span><h4>Public page</h4><p>Renders on the persona domain with the chosen variation.</p></div>
+    <div class="step"><span class="n">CONVERT</span><h4>CTA → book</h4><p>Deep-link to the sportsbook; the click is the tracked event.</p></div>
+    <div class="step"><span class="n">CAPTURE</span><h4>Subscriber</h4><p>Lead pages collect email/phone into the audience.</p></div>
+    <div class="step"><span class="n">RE-ENGAGE</span><h4>Email / SMS</h4><p>Campaigns and automations push the next pick.</p></div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <p class="eyebrow">SECTION 01</p>
+  <h2>Dashboard</h2>
+  <p class="lead">The landing view — a health check on offers and traffic at a glance.</p>
+  <figure>
+    <img src="img/shot-2.png" alt="Picks Hub Dashboard showing live offers, page views, CTA clicks, CTR, recent offers, recent exports, and performance by sportsbook">
+    <figcaption><b>Dashboard</b> — top-line counters, recent offers &amp; exports, and a per-sportsbook performance breakdown.</figcaption>
+  </figure>
+  <p>The four counters across the top are <strong>Live Offers</strong>, <strong>Page Views</strong>, <strong>CTA Clicks</strong> and <strong>CTR</strong> — your fastest read on whether pages are being seen and clicked. <strong>Recent Offers</strong> lists what's live with per-item views/clicks; <strong>Recent Exports</strong> logs the last betslip exports and who ran them. <strong>Performance by Sportsbook</strong> ranks books by views, clicks and CTR — here Fanatics carries the offer volume (29 offers) while FanDuel shows the highest raw CTR.</p>
+  <div class="setup"><span class="h">USE IT FOR</span>
+    <ol><li>Confirming today's offers are actually <kbd>live</kbd> and taking clicks.</li><li>Spotting a book whose CTR has dropped before it drags the account.</li><li>Jumping straight into a recent offer to edit it.</li></ol>
+  </div>
+</section>
+
+<section id="picks">
+  <p class="eyebrow">SECTION 02</p>
+  <h2>Picks &amp; Parlays</h2>
+  <p class="lead">The core content engine — every bet slip you publish, build, and share.</p>
+  <figure>
+    <img src="img/shot-3.png" alt="Picks and Parlays list showing 30 picks with status, bet type, odds, legs, variation, views and clicks">
+    <figcaption><b>Picks &amp; Parlays</b> — the full library of slips with status, bet type, odds, legs and per-pick views/clicks.</figcaption>
+  </figure>
+  <p>Each row is one published pick: a <strong>title</strong> and <strong>slug</strong> (the URL, e.g. <code>sep14-sgp</code>), its <strong>status</strong>, <strong>bet type</strong> (Single, Parlay, SGP), <strong>odds</strong>, number of <strong>legs</strong>, the <strong>variation</strong> (layout) it renders in, and live <strong>views/clicks</strong>. Filter by status or search by slug to find one fast.</p>
+
+  <h3 style="margin-top:34px;font-size:1.35rem">Building a pick</h3>
+  <figure>
+    <img src="img/shot-4.png" alt="New Pick editor left panel with Basics, Slip Info, Legs, Page and CTA sections and a live phone preview on the right">
+    <figcaption><b>Pick editor</b> — left: the build form; right: a live phone preview. The variation tabs (V2 Slip … V8 Card) switch the public layout.</figcaption>
+  </figure>
+  <p>The editor is split: you build on the left, and the <strong>Live Preview</strong> on the right renders the public page in real time. The variation tabs along the top — <kbd>V2 SLIP</kbd>, <kbd>V3 WINNER</kbd>, <kbd>V4 EDITORIAL</kbd>, <kbd>V5 STACKED</kbd>, <kbd>V6 MULTI</kbd>, <kbd>V7 MINIMAL</kbd>, <kbd>V8 CARD</kbd> — let you flip the same pick between eight page designs without rebuilding it.</p>
+  <div class="scroll"><table class="field-tbl">
+    <thead><tr><th>Section</th><th>What it sets</th></tr></thead>
+    <tbody>
+      <tr><td>Basics</td><td>Slug (the page URL), type (Bet Slip Share), LP variation, and which <strong>Sportsbook</strong> the slip routes to.</td></tr>
+      <tr><td>Slip Info</td><td>Slip title, sport, bet type, total odds, default wager, and the <strong>Slip Deep Link URL</strong> (the betslip share link the CTA sends the user to). Toggle the wager calculator on/off.</td></tr>
+      <tr><td>Legs</td><td>Add each leg — selection, market, odds, game/event and status (pending/won/lost). The preview assembles them into the slip card.</td></tr>
+      <tr><td>Page &amp; CTA</td><td>Badge text/color, CTA label, an optional CTA URL override, and the fine print / RG line shown under the button.</td></tr>
+      <tr><td>Design Colors / SEO</td><td>Per-page color overrides and the meta title/description/share image.</td></tr>
+    </tbody>
+  </table></div>
+  <figure>
+    <img src="img/shot-5.png" alt="Pick editor with one leg added — Thunder -6.5 spread at -110 — and the preview updating to show the selection in the slip">
+    <figcaption><b>Adding a leg</b> — selection, market, odds, game and status. The preview's slip and odds update as legs are added.</figcaption>
+  </figure>
+  <div class="setup"><span class="h">SET UP A PICK</span>
+    <ol>
+      <li>Hit <kbd>New Pick</kbd>, set a clean <strong>slug</strong> and pick the <strong>sportsbook</strong>.</li>
+      <li>Fill <strong>Slip Info</strong> and paste the <strong>Slip Deep Link URL</strong> from the book's betslip-share.</li>
+      <li>Add each <strong>leg</strong>; watch the preview build the card.</li>
+      <li>Choose the <strong>variation</strong> that fits the pick, set the <strong>CTA</strong> and fine print.</li>
+      <li>Save as <kbd>draft</kbd>, preview, then flip to <kbd>live</kbd>.</li>
+    </ol>
+  </div>
+  <div class="callout">The public bet-slip page is the mid-funnel domain described in Part 1. The CTA click is the <strong>InitiateCheckout</strong> event Meta optimises toward, and the redirect hands the user to the sportsbook — so the deep link and CTA here are what tie the ad account to the platform.</div>
+</section>
+
+<section id="offers">
+  <p class="eyebrow">SECTION 03</p>
+  <h2>Brand Offers</h2>
+  <p class="lead">Sportsbook bonus/promo landing pages — the "Bet $20, Get $350" style pages, separate from picks.</p>
+  <figure>
+    <img src="img/shot-6.png" alt="Brand Offer editor for a Fanatics promo, showing hero and offer copy fields and a live preview of a Bet 20 Get 350 offer page">
+    <figcaption><b>Brand Offer editor</b> — hero copy, badge, hero image, CTA routing and the full RG/21+ line, with live preview.</figcaption>
+  </figure>
+  <p>A Brand Offer is a <strong>bonus landing page</strong> rather than a slip. You set the <strong>headline</strong> and <strong>highlight</strong> ("BET $20" / "GET $350"), a <strong>subheadline</strong>, a <strong>hero image</strong> (the book's creative), the <strong>CTA label + tracking URL</strong>, and a mandatory <strong>RG / 21+ line</strong> shown in full above the fold. Offers carry their own layout family — <kbd>O1 Bonus Hero</kbd> through <kbd>O6 Editorial Review</kbd> — plus the V-series, so you can present the same promo as a phone mockup, a how-to-claim, an offer-plus-pick, a comparison, or an editorial review.</p>
+  <div class="setup"><span class="h">SET UP AN OFFER</span>
+    <ol>
+      <li>Create the offer, choose <strong>type = Community / Offer</strong> and the <strong>sportsbook</strong>.</li>
+      <li>Write hero copy and drop in the book's <strong>hero image</strong>.</li>
+      <li>Paste the affiliate <strong>CTA tracking URL</strong> and confirm the <strong>RG/21+</strong> line is complete for the states you run.</li>
+      <li>Pick an <strong>O-variation</strong>, preview, and publish.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="supporting">
+  <p class="eyebrow">SECTION 04</p>
+  <h2>Sportsbooks, presets &amp; compliance</h2>
+  <p class="lead">The reusable building blocks every pick and offer pulls from — set these once and they populate everywhere.</p>
+  <figure>
+    <img src="img/shot-8.png" alt="Sportsbooks section listing Polymarket, Fanduel, DraftKings, Fanatics and BetMGM with edit and delete controls">
+    <figcaption><b>Sportsbooks</b> — the connected books (Fanatics, FanDuel, DraftKings, BetMGM, Polymarket), each with logo, brand color, deep-link template and available states.</figcaption>
+  </figure>
+  <div class="mod">
+    <div class="mod-head"><h3>Sportsbooks</h3><span class="role">the books you route to</span></div>
+    <div class="mod-body"><p>Each book stores a <strong>logo</strong>, <strong>brand color</strong>, a <strong>deep-link template</strong> (with a <code>{code}</code> placeholder), a web fallback, and its <strong>available US states</strong>. Picks and offers reference these, so the right logo, colors and state rules apply automatically.</p></div>
+  </div>
+  <div class="mod">
+    <div class="mod-head"><h3>CTA Presets</h3><span class="role">reusable buttons</span></div>
+    <div class="mod-body"><p>Saved CTA button configs — a label, a <strong>URL template</strong>, a color override and new-tab behaviour, optionally tied to a sportsbook. Build the "Add to Fanatics Betslip" button once and reuse it across every pick.</p></div>
+  </div>
+  <div class="mod">
+    <div class="mod-head"><h3>Footer Presets</h3><span class="role">compliance footer</span></div>
+    <div class="mod-body"><p>Reusable footers carrying the <strong>age gate</strong> (21+), <strong>helplines</strong> and legal links. Attach a preset instead of retyping compliance copy per page.</p></div>
+  </div>
+  <div class="mod">
+    <div class="mod-head"><h3>Disclaimers &amp; Testimonials</h3><span class="role">page content blocks</span></div>
+    <div class="mod-body"><p><strong>Disclaimers</strong> stores reusable RG/legal blocks; <strong>Testimonials</strong> holds social-proof quotes you can surface on lead pages and offers.</p></div>
+  </div>
+  <div class="mod">
+    <div class="mod-head"><h3>Short Links</h3><span class="role">trackable redirects</span></div>
+    <div class="mod-body"><p>Branded short links that redirect (via the <code>resolveShortLink</code> function) to any page or deep link — clean links for bios, DMs and SMS, with the click captured.</p></div>
+  </div>
+  <div class="setup"><span class="h">ORDER OF SETUP</span>
+    <ol><li>Add your <strong>Sportsbooks</strong> first (everything references them).</li><li>Build <strong>CTA</strong>, <strong>Footer</strong> and <strong>Disclaimer</strong> presets.</li><li>Then build picks/offers — they'll inherit all of the above.</li></ol>
+  </div>
+</section>
+
+<section id="audience">
+  <p class="eyebrow">SECTION 05</p>
+  <h2>Lead Pages &amp; Subscribers</h2>
+  <p class="lead">How the persona turns paid traffic into an owned audience.</p>
+  <figure>
+    <img src="img/shot-1.png" alt="Public Miles Parker Picks lead page — Free daily sports picks backed by data — with a sign-up form for name, email and phone plus SMS consent">
+    <figcaption><b>Public lead page</b> — the opt-in surface: value prop, "How It Works", and a name/email/phone form with SMS consent.</figcaption>
+  </figure>
+  <p><strong>Lead Pages</strong> are the opt-in surfaces — headline, subheadline, body copy, CTA text, a thank-you message and an optional redirect. Each page can <strong>auto-apply tags</strong> and trigger a <strong>welcome sequence</strong> on sign-up. The SMS consent block captures explicit opt-in (required for compliant texting).</p>
+  <p><strong>Subscribers</strong> is the resulting list — each record holds phone (E.164), email, name, opt-in <strong>status</strong> (active / unsubscribed / bounced), SMS status and tags, scoped to the persona. This is the audience your email and SMS campaigns send to.</p>
+  <div class="setup"><span class="h">SET UP CAPTURE</span>
+    <ol><li>Build a <strong>Lead Page</strong> with a clear value prop and the consent block.</li><li>Set <strong>tags to apply</strong> and enable the <strong>welcome sequence</strong>.</li><li>Point your follower/traffic ads at it; new opt-ins land in <strong>Subscribers</strong> tagged and enrolled.</li></ol>
+  </div>
+</section>
+
+<section id="messaging">
+  <p class="eyebrow">SECTION 06</p>
+  <h2>Campaigns — Email &amp; SMS</h2>
+  <p class="lead">The re-engagement engine that pushes each day's pick back to the list.</p>
+  <figure>
+    <img src="img/shot-7.png" alt="Campaigns list showing email campaigns with draft, sent and cancelled statuses plus open and click rates">
+    <figcaption><b>Campaigns</b> — email &amp; SMS sends with status, recipients, and open/click rates; tabs for Audiences, Automations, Reports and Templates.</figcaption>
+  </figure>
+  <p>Campaigns covers both <strong>Email</strong> and <strong>SMS</strong>. Each row shows status (<kbd>Draft</kbd>/<kbd>Sent</kbd>/<kbd>Cancelled</kbd>), recipients and <strong>open/click rates</strong>. The tab bar adds <strong>Audiences</strong> (segments), <strong>Automations</strong> (triggered flows), <strong>Reports</strong> and <strong>Templates</strong>. Behind it, scheduled sends, sequences and events are processed by background workflows on a schedule.</p>
+  <div class="scroll"><table class="field-tbl">
+    <thead><tr><th>Capability</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td>Campaigns</td><td>One-off broadcasts (e.g. "Pick of the Day 8/14") to the list or a segment.</td></tr>
+      <tr><td>Automations</td><td>Triggered flows — welcome series, daily recap, re-engagement for lapsed subscribers.</td></tr>
+      <tr><td>Sequences</td><td>Multi-step drip enrollments (the welcome sequence lead pages trigger).</td></tr>
+      <tr><td>Templates</td><td>Reusable email layouts so daily sends are fast and on-brand.</td></tr>
+      <tr><td>Send a Pick</td><td>Push an existing pick straight to subscribers as an email/SMS blast.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="setup"><span class="h">SEND A DAILY PICK</span>
+    <ol><li>Publish the <strong>pick</strong> first (Section 02).</li><li>Create a <strong>campaign</strong> from a template, or use <strong>Send Pick</strong>.</li><li>Pick the <strong>audience/segment</strong>, schedule or send, then read open/click back in the list.</li></ol>
+  </div>
+  <p style="color:var(--muted);font-size:.9rem">Email Settings holds the sending domain and deliverability config; SMS runs through the messaging functions with delivery status and reply capture wired in.</p>
+</section>
+
+<section id="measure">
+  <p class="eyebrow">SECTION 07</p>
+  <h2>Analytics, Results &amp; A/B Tests</h2>
+  <p class="lead">Where you read what's working and settle what's finished.</p>
+  <figure>
+    <img src="img/shot-9.png" alt="Analytics section with total views, CTA clicks, conversions, CTR and conversion rate, a per-sportsbook chart, and a top performing offers table">
+    <figcaption><b>Analytics</b> — traffic and conversion KPIs, performance by sportsbook, and a top-performing-offers table.</figcaption>
+  </figure>
+  <div class="mod">
+    <div class="mod-head"><h3>Analytics</h3><span class="role">traffic &amp; conversion</span></div>
+    <div class="mod-body"><p>Top-line <strong>Total Views</strong>, <strong>CTA Clicks</strong>, <strong>Conversions</strong>, <strong>CTR</strong> and <strong>Conversion Rate</strong>, a per-sportsbook breakdown, and a <strong>Top Performing Offers</strong> ranking by CTR. This is where you decide which pages and books to lean into.</p></div>
+  </div>
+  <div class="mod">
+    <div class="mod-head"><h3>Results</h3><span class="role">settle picks</span></div>
+    <div class="mod-body"><p>The <strong>Settle Picks</strong> tab lists picks pending settlement so you can mark each won/lost/push. Graded results feed the persona's public track record and win cards — the transparency angle the lead pages promise.</p></div>
+  </div>
+  <div class="mod">
+    <div class="mod-head"><h3>A/B Tests</h3><span class="role">optimise pages</span></div>
+    <div class="mod-body"><p>Run variants of a page/offer against each other and let the winner emerge on the metric that matters (CTR / conversion) — the systematic version of the variation tabs.</p></div>
+  </div>
+</section>
+
+<section id="admin">
+  <p class="eyebrow">SECTION 08</p>
+  <h2>Settings, Users &amp; Access Gate</h2>
+  <p class="lead">The administrative controls that wrap the whole instance.</p>
+  <ul class="clean">
+    <li><strong>Settings</strong> — persona identity (name, handle, avatar, logos, brand colors) and system-wide defaults that theme every public page.</li>
+    <li><strong>Email Settings</strong> — sending domain, from-name and deliverability/verification status.</li>
+    <li><strong>User Management</strong> — team members and their roles; admin-gated actions (creating presets, editing offers) are restricted here.</li>
+    <li><strong>Access Gate</strong> — a gate protecting the admin/back office, with session and audit tracking so you can see who accessed what.</li>
+  </ul>
+  <div class="callout"><strong>Replication note.</strong> Because a Picks Hub instance = one persona, spinning up a new persona means cloning this setup, swapping the identity in <strong>Settings</strong>, adding its <strong>sportsbooks/presets</strong>, and pointing its <strong>domain</strong> at the new instance. Everything downstream — picks, offers, capture, messaging, analytics — then works the same way.</div>
+</section>
+
+</div><!-- /wrap part2 -->
+
+<script>
+(function(){
+  var links=document.querySelectorAll('.partnav a');
+  var manual=document.getElementById('manual');
+  function sync(){
+    var atManual=manual.getBoundingClientRect().top<=120;
+    links[0].classList.toggle('on',!atManual);
+    links[1].classList.toggle('on',atManual);
+  }
+  window.addEventListener('scroll',sync,{passive:true});sync();
+})();
+</script>
+
 <footer>
-  Meta Ads Strategy · Jan–Sep 2026 · Internal strategy record · Prepared by André Mota, Clever Advertising. Figures sourced from Meta Ads Manager exports (campaign, ad-set, ad level).
+  Meta Ads Strategy &amp; Picks Hub Operator Manual · 2026 · Internal handover document · Prepared by André Mota, Clever Advertising. Meta figures from Ads Manager exports; platform built on Base44.
 </footer>
 
 </div>
